@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+declare function initPlugins();
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit() {
+    initPlugins();
   }
 
+  login(){
+    console.log('ingresando en el dashboard');
+    this.router.navigate(['/dashboard']);
+  }
 }

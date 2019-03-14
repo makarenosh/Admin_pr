@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+
+import { DOCUMENT } from '@angular/platform-browser';
+import { SettingsService } from './services/service.index';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'adminpro';
+
+  constructor(
+    @Inject(DOCUMENT) private _document,
+    public _settingsService: SettingsService
+  ){
+
+  }
 }

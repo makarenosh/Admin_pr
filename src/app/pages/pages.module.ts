@@ -16,6 +16,7 @@ import { ProgressComponent } from './progress/progress.component';
 // tslint:disable-next-line:quotemark
 import { IncrementatorComponent } from "../components/incrementator/incrementator.component";
 import { GraficoDonaComponent } from './grafico-dona/grafico-dona.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { GraficoDonaComponent } from './grafico-dona/grafico-dona.component';
         Graficas1Component,
         PagesComponent,
         ProgressComponent,  
-        IncrementatorComponent, GraficoDonaComponent      
+        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent      
     ],
     exports: [
         PagesComponent,

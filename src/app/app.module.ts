@@ -6,7 +6,7 @@ import { APP_ROUTES } from './app.routes';
 
 //Modulos
 import { PagesModule } from './pages/pages.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -28,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
     APP_ROUTES,
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule,
     SharedModule
   ],

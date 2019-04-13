@@ -7,6 +7,7 @@ import { SidebarService, UserService } from 'src/app/services/service.index';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  user: any;
 
   constructor(
     public _sidebarService : SidebarService,
@@ -14,7 +15,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this._sidebarService.menu);    
+    this.user = this.userService.user; 
   }
 
 }

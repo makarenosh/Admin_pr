@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
       let token = googleUser.getAuthResponse().id_token;
       
       this.userService.googleLogin(token).subscribe(
-        (response: any)=>{          
-          this.saveStorage(response.id, response.token, response.user);     
+        (response: any)=>{                    
           window.location.href = '#/dashboard';
         },
         error=>{
@@ -74,13 +73,7 @@ export class LoginComponent implements OnInit {
     );    
     this.userService.login(user, form.value.recuerdame).subscribe(
       (response: any)=>{             
-        swal('Bienvenido!, ' + user.email, 'success');
-        if(form.value.recuerdame){
-          localStorage.setItem('email', user.email);
-        }else{
-          localStorage.removeItem('email');
-        }
-        this.saveStorage(response.id, response.token, response.user);
+        swal('Bienvenido!, ' + user.email, 'success');               
         this.router.navigate(['/dashboard']);
       },
       error=>{
@@ -89,13 +82,5 @@ export class LoginComponent implements OnInit {
     )    
   }
 
-  saveStorage(id: string, token: string, user: User){
-    localStorage.setItem('id', id);
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
-    this.user = user;
-    this.token = token;
-    this.userService.setToken(token);
-  }
 
 }

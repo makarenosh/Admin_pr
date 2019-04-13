@@ -21,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent    
   ],
   imports: [
     BrowserModule,

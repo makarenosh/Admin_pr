@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import swal from 'sweetalert';
 import { UploadFileService } from '../upload-file.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   public token: string;
-  public user: User;
+  public user: User;  
 
   constructor(
     public _http: HttpClient,
@@ -40,8 +41,10 @@ export class UserService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.put(url, user, { headers: headers })
     .map((res: any)=>{
-        let user: User = res.user;
-        this.saveStorage(user._id, this.token, user);
+        if(user._id == this.user._id){
+          var userDB: User = res.user;
+          this.saveStorage(userDB._id, this.token, userDB);
+        }
         swal('Usuario actualizado', user.name, 'success');
       return res.user;
     });
@@ -69,6 +72,10 @@ export class UserService {
     this.user = user;    
     return this._http.post(url, params, { headers: headers })
     .map((res: any)=>{
+      console.log("LOGIN PETICION A ESTA URL");
+      console.log(url);
+      console.log('RESULTADO');
+      console.log(res);
       this.saveStorage(res.id, res.token, res.user);
       return true;
     });
@@ -114,7 +121,6 @@ export class UserService {
         this.user.image = response.user.image;
         swal('Imagen de usuario actualizada correctamente', this.user.name, 'success');
         this.saveStorage(id, this.token, this.user);
-
       }
     ).catch(
       error=>{
@@ -123,4 +129,23 @@ export class UserService {
     )
   }
 
+  getUsers(from: number): Observable<any>{
+    let url = URL_SERVICES + '/user?from=' + from;    
+    return this._http.get(url);
+  }
+
+  searchUser(term: string){
+    let url = URL_SERVICES + '/search/collection/user/' + term;
+    return this._http.get(url).map(
+      (response: any)=>{        
+        return response.user;
+      }
+    )
+  }
+
+  deleteUser(id: string){
+    let url = URL_SERVICES + /user/ + id + '?token=' + this.token;
+    return this._http.delete(url);
+  }
+  
 }

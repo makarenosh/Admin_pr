@@ -22,6 +22,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PipesModule } from "../pipes/pipes.module";
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from "@angular/common";
+import { UsersComponent } from './users/users.component';
+import { UploadWindowComponent } from '../components/upload-window/upload-window.component';
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { CommonModule } from "@angular/common";
         Graficas1Component,
         PagesComponent,
         ProgressComponent,  
-        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent      
+        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent, UsersComponent, UploadWindowComponent      
     ],
     exports: [
         PagesComponent,

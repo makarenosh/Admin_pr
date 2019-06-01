@@ -24,6 +24,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from "@angular/common";
 import { UsersComponent } from './users/users.component';
 import { UploadWindowComponent } from '../components/upload-window/upload-window.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctor.component';
 
 
 @NgModule({
@@ -32,7 +35,7 @@ import { UploadWindowComponent } from '../components/upload-window/upload-window
         Graficas1Component,
         PagesComponent,
         ProgressComponent,  
-        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent, UsersComponent, UploadWindowComponent      
+        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent, UsersComponent, UploadWindowComponent, HospitalsComponent, DoctorsComponent, DoctorComponent      
     ],
     exports: [
         PagesComponent,

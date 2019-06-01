@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "adminpro"
+  "defaultProject": "adminpro",
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
+  }
 }

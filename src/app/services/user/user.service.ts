@@ -71,11 +71,7 @@ export class UserService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.user = user;    
     return this._http.post(url, params, { headers: headers })
-    .map((res: any)=>{
-      console.log("LOGIN PETICION A ESTA URL");
-      console.log(url);
-      console.log('RESULTADO');
-      console.log(res);
+    .map((res: any)=>{    
       this.saveStorage(res.id, res.token, res.user);
       return true;
     });

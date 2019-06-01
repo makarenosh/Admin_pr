@@ -7,13 +7,15 @@ import { URL_SERVICES } from '../config/config';
 export class ImagePipe implements PipeTransform {
 
   transform(img: string, type: string = 'users'): any {
-    let url = URL_SERVICES + '/upload/';      
+    let url = URL_SERVICES + '/upload/';   
+    console.log(img);
+    console.log(type);
     if(!img || img == 'null'){      
       return url + 'users/xxx'
     }else{
       if(img.indexOf('https')>=0){
         return img;
-      }else{        
+      }else{         
         return url + '/' + type + '/' + img; 
       }
     }

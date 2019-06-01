@@ -22,7 +22,6 @@ export class UploadModalService {
   showModal(type: string, id: string) {
     this.hidden = 'block';
     this.type = type;
-    this.id = id;
-    console.log('showed modal');
+    this.id = id;    
   }
 }

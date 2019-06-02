@@ -8,7 +8,7 @@ declare function initPlugins();
   styleUrls: ['./nopagefound.component.css']
 })
 export class NopagefoundComponent implements OnInit {
-
+  anio = new Date().getFullYear();
   constructor() { }
 
   ngOnInit() {

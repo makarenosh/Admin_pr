@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class UserService {
   public token: string;
   public user: User;  
+  public menu:any = {};
 
   constructor(
     public _http: HttpClient,
@@ -43,7 +44,7 @@ export class UserService {
     .map((res: any)=>{
         if(user._id == this.user._id){
           var userDB: User = res.user;
-          this.saveStorage(userDB._id, this.token, userDB);
+          this.saveStorage(userDB._id, this.token, userDB, this.menu);
         }
         swal('Usuario actualizado', user.name, 'success');
       return res.user;
@@ -54,8 +55,8 @@ export class UserService {
     let url = URL_SERVICES + '/login/google';        
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(url, {token: googleToken}, { headers: headers })
-    .map((res: any)=>{
-      this.saveStorage(res.id, res.token, res.user);
+    .map((res: any)=>{      
+      this.saveStorage(res.id, res.token, res.user, res.menu);
       return true;
     });       
   }
@@ -71,8 +72,8 @@ export class UserService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.user = user;    
     return this._http.post(url, params, { headers: headers })
-    .map((res: any)=>{    
-      this.saveStorage(res.id, res.token, res.user);
+    .map((res: any)=>{          
+      this.saveStorage(res.id, res.token, res.user, res.menu);
       return true;
     });
   }
@@ -82,12 +83,15 @@ export class UserService {
   }
 
   loadStorage(){
+
     if(localStorage.getItem('token')){
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.menu = JSON.parse(localStorage.getItem('menu'));
     }else{
       this.token = '';
       this.user = null;      
+      this.menu = [];
     }
   }
 
@@ -99,28 +103,29 @@ export class UserService {
     this.token = '';
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('menu');
     this.router.navigate(['/login']);
   }
 
-  saveStorage(id: string, token: string, user: User){
+  saveStorage(id: string, token: string, user: User, menu: any){
+    this.menu = menu;
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('menu', JSON.stringify(menu));
     this.user = user;
     this.token = token;    
   }
 
   changeImg(file: File, id: string){
     this.uploadService.uploadFile(file, 'users', id).then(
-      (response: any)=>{
-        console.log(response);
+      (response: any)=>{        
         this.user.image = response.user.image;
         swal('Imagen de usuario actualizada correctamente', this.user.name, 'success');
-        this.saveStorage(id, this.token, this.user);
+        this.saveStorage(id, this.token, this.user, this.menu);
       }
     ).catch(
-      error=>{
-        console.log(error);
+      error=>{        
       }
     )
   }

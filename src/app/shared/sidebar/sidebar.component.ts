@@ -8,6 +8,7 @@ import { SidebarService, UserService } from 'src/app/services/service.index';
 })
 export class SidebarComponent implements OnInit {
   user: any;
+  menu: any = {};
 
   constructor(
     public _sidebarService : SidebarService,

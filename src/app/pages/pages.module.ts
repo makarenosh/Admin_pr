@@ -27,6 +27,7 @@ import { UploadWindowComponent } from '../components/upload-window/upload-window
 import { HospitalsComponent } from './hospitals/hospitals.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctor.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { DoctorComponent } from './doctor.component';
         Graficas1Component,
         PagesComponent,
         ProgressComponent,  
-        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent, UsersComponent, UploadWindowComponent, HospitalsComponent, DoctorsComponent, DoctorComponent      
+        IncrementatorComponent, GraficoDonaComponent, AccountSettingsComponent, PromesasComponent, RxjsComponent, ProfileComponent, UsersComponent, UploadWindowComponent, HospitalsComponent, DoctorsComponent, DoctorComponent, SearchComponent      
     ],
     exports: [
         PagesComponent,
